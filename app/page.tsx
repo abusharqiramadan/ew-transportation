@@ -416,7 +416,7 @@ const pricingTiers: PricingTier[] = [
     highlighted: true,
     badge: "$150 flat rate",
     ctaLabel: "Book a delivery",
-    ctaHref: "/quote?plan=per-delivery",
+    ctaHref: "/request-contract",
     privacyNote: "No hidden fees. Flat rate. SMS tracking included.",
   },
   {
@@ -684,336 +684,336 @@ export default function Home() {
             </motion.div>
           </motion.section>
 
-        {/* Problem section waits for scroll and staggers each pain point card. */}
-        <motion.section
-          id="problem"
-          layout
-          className="scroll-mt-0 bg-gradient-to-b from-slate-950 via-black to-slate-950 py-20"
-          variants={sectionVariants}
-          initial={reduceMotion ? undefined : "hidden"}
-          whileInView={reduceMotion ? undefined : "show"}
-          viewport={DEFAULT_VIEWPORT}
-          transition={{ duration: 0.45, ease: DEFAULT_EASE }}
-          style={motionStyle}
-        >
-          <div className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
-            <motion.div
-              layout
-              className="mx-auto max-w-3xl text-center"
-              variants={staggerContainerVariants}
-              style={motionStyle}
-            >
-              <motion.h2
+          {/* Problem section waits for scroll and staggers each pain point card. */}
+          <motion.section
+            id="problem"
+            layout
+            className="scroll-mt-0 bg-gradient-to-b from-slate-950 via-black to-slate-950 py-20"
+            variants={sectionVariants}
+            initial={reduceMotion ? undefined : "hidden"}
+            whileInView={reduceMotion ? undefined : "show"}
+            viewport={DEFAULT_VIEWPORT}
+            transition={{ duration: 0.45, ease: DEFAULT_EASE }}
+            style={motionStyle}
+          >
+            <div className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
+              <motion.div
                 layout
-                variants={staggerItemVariants}
-                className="text-3xl font-bold sm:text-4xl text-slate-100"
+                className="mx-auto max-w-3xl text-center"
+                variants={staggerContainerVariants}
                 style={motionStyle}
               >
-                Delivery delays shouldn't derail your day
-              </motion.h2>
+                <motion.h2
+                  layout
+                  variants={staggerItemVariants}
+                  className="text-3xl font-bold sm:text-4xl text-slate-100"
+                  style={motionStyle}
+                >
+                  Delivery delays shouldn't derail your day
+                </motion.h2>
+                <motion.div
+                  layout
+                  variants={staggerContainerVariants}
+                  className="mt-8 flex flex-col gap-3 text-lg text-slate-300"
+                  style={motionStyle}
+                >
+                  {[
+                    "Retail teams waste hours chasing couriers who won't confirm pickup windows.",
+                    "Marketplace buyers gamble on cash drivers with no insurance or proof of delivery.",
+                    "Hidden surcharges turn a simple drop-off into an expensive surprise.",
+                    "Most services still rely on voicemail tag instead of instant SMS tracking.",
+                    "A modern city needs a modern delivery partner built for speed and transparency.",
+                  ].map((line) => (
+                    <motion.p
+                      key={line}
+                      layout
+                      variants={staggerItemVariants}
+                      style={motionStyle}
+                    >
+                      {line}
+                    </motion.p>
+                  ))}
+                </motion.div>
+              </motion.div>
               <motion.div
                 layout
                 variants={staggerContainerVariants}
-                className="mt-8 flex flex-col gap-3 text-lg text-slate-300"
+                className="mt-16 space-y-6"
                 style={motionStyle}
               >
-                {[
-                  "Retail teams waste hours chasing couriers who won't confirm pickup windows.",
-                  "Marketplace buyers gamble on cash drivers with no insurance or proof of delivery.",
-                  "Hidden surcharges turn a simple drop-off into an expensive surprise.",
-                  "Most services still rely on voicemail tag instead of instant SMS tracking.",
-                  "A modern city needs a modern delivery partner built for speed and transparency.",
-                ].map((line) => (
-                  <motion.p
-                    key={line}
+                {challenges.map((item) => (
+                  <motion.article
+                    key={item.title}
                     layout
                     variants={staggerItemVariants}
+                    className="flex items-start gap-4"
                     style={motionStyle}
                   >
-                    {line}
-                  </motion.p>
+                    <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/15 text-blue-400">
+                      <item.icon className="h-6 w-6" />
+                    </span>
+                    <div className="flex-1 text-left">
+                      {item.stat ? (
+                        <p className="text-xl font-semibold text-blue-300 sm:text-2xl">
+                          {item.stat}
+                        </p>
+                      ) : null}
+                      {item.statSource ? (
+                        <p className="text-xs uppercase tracking-wide text-slate-500">
+                          {item.statSource}
+                        </p>
+                      ) : null}
+                      <h3 className="mt-2 text-lg font-semibold text-slate-100">{item.title}</h3>
+                      <p className="mt-1 text-base text-slate-300">{item.description}</p>
+                      {item.contextNote ? (
+                        <p className="mt-2 text-sm font-medium text-cyan-300/80">{item.contextNote}</p>
+                      ) : null}
+                    </div>
+                  </motion.article>
                 ))}
               </motion.div>
-            </motion.div>
-            <motion.div
-              layout
-              variants={staggerContainerVariants}
-              className="mt-16 space-y-6"
-              style={motionStyle}
-            >
-              {challenges.map((item) => (
-                <motion.article
-                  key={item.title}
-                  layout
-                  variants={staggerItemVariants}
-                  className="flex items-start gap-4"
-                  style={motionStyle}
-                >
-                  <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/15 text-blue-400">
-                    <item.icon className="h-6 w-6" />
-                  </span>
-                  <div className="flex-1 text-left">
-                    {item.stat ? (
-                      <p className="text-xl font-semibold text-blue-300 sm:text-2xl">
-                        {item.stat}
-                      </p>
-                    ) : null}
-                    {item.statSource ? (
-                      <p className="text-xs uppercase tracking-wide text-slate-500">
-                        {item.statSource}
-                      </p>
-                    ) : null}
-                    <h3 className="mt-2 text-lg font-semibold text-slate-100">{item.title}</h3>
-                    <p className="mt-1 text-base text-slate-300">{item.description}</p>
-                    {item.contextNote ? (
-                      <p className="mt-2 text-sm font-medium text-cyan-300/80">{item.contextNote}</p>
-                    ) : null}
-                  </div>
-                </motion.article>
-              ))}
-            </motion.div>
-            <motion.p
-              layout
-              variants={staggerItemVariants}
-              className="mt-10 text-left text-sm text-slate-500 sm:text-center"
-              style={motionStyle}
-            >
-              Sources: Retail Logistics Report 2025, Prairies Delivery Study 2024, Alberta Consumer Council 2025.
-            </motion.p>
-          </div>
-        </motion.section>
-
-        {/* Solution section uses staggered cards to explain phased support. */}
-        <motion.section
-          id="solution"
-          layout
-          className="scroll-mt-32 bg-gradient-to-b from-slate-950 via-black to-slate-950 py-20"
-          variants={sectionVariants}
-          initial={reduceMotion ? undefined : "hidden"}
-          whileInView={reduceMotion ? undefined : "show"}
-          viewport={DEFAULT_VIEWPORT}
-          transition={{ duration: 0.5, ease: DEFAULT_EASE }}
-          style={motionStyle}
-        >
-          <div className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
-            <motion.div
-              layout
-              variants={staggerContainerVariants}
-              className="mx-auto max-w-3xl text-center"
-              style={motionStyle}
-            >
-              <motion.h2
-                layout
-                variants={staggerItemVariants}
-                className="text-3xl font-semibold sm:text-4xl text-slate-100"
-                style={motionStyle}
-              >
-                Specialized delivery ops without the overhead
-              </motion.h2>
               <motion.p
                 layout
                 variants={staggerItemVariants}
-                className="mt-4 text-lg text-slate-300"
+                className="mt-10 text-left text-sm text-slate-500 sm:text-center"
                 style={motionStyle}
               >
-                EW Transportation combines bonded drivers, responsive dispatch, and real-time software so every appliance, furniture piece, or parcel arrives on schedule.
+                Sources: Retail Logistics Report 2025, Prairies Delivery Study 2024, Alberta Consumer Council 2025.
               </motion.p>
-            </motion.div>
-            <motion.div
-              layout
-              variants={staggerContainerVariants}
-              className="mt-14 grid gap-10 md:grid-cols-2"
-              style={motionStyle}
-            >
-              {solutionPoints.map((point, index) => {
-                const Icon = point.icon
-                const stepNumber = index + 1
-                const totalSteps = solutionPoints.length
-                return (
+            </div>
+          </motion.section>
+
+          {/* Solution section uses staggered cards to explain phased support. */}
+          <motion.section
+            id="solution"
+            layout
+            className="scroll-mt-32 bg-gradient-to-b from-slate-950 via-black to-slate-950 py-20"
+            variants={sectionVariants}
+            initial={reduceMotion ? undefined : "hidden"}
+            whileInView={reduceMotion ? undefined : "show"}
+            viewport={DEFAULT_VIEWPORT}
+            transition={{ duration: 0.5, ease: DEFAULT_EASE }}
+            style={motionStyle}
+          >
+            <div className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
+              <motion.div
+                layout
+                variants={staggerContainerVariants}
+                className="mx-auto max-w-3xl text-center"
+                style={motionStyle}
+              >
+                <motion.h2
+                  layout
+                  variants={staggerItemVariants}
+                  className="text-3xl font-semibold sm:text-4xl text-slate-100"
+                  style={motionStyle}
+                >
+                  Specialized delivery ops without the overhead
+                </motion.h2>
+                <motion.p
+                  layout
+                  variants={staggerItemVariants}
+                  className="mt-4 text-lg text-slate-300"
+                  style={motionStyle}
+                >
+                  EW Transportation combines bonded drivers, responsive dispatch, and real-time software so every appliance, furniture piece, or parcel arrives on schedule.
+                </motion.p>
+              </motion.div>
+              <motion.div
+                layout
+                variants={staggerContainerVariants}
+                className="mt-14 grid gap-10 md:grid-cols-2"
+                style={motionStyle}
+              >
+                {solutionPoints.map((point, index) => {
+                  const Icon = point.icon
+                  const stepNumber = index + 1
+                  const totalSteps = solutionPoints.length
+                  return (
+                    <motion.article
+                      key={point.highlight}
+                      layout
+                      variants={staggerItemVariants}
+                      className="flex h-full flex-col gap-5 rounded-3xl border border-slate-800 bg-slate-900/90 p-8 shadow-lg shadow-blue-500/10 transition-transform duration-300 hover:-translate-y-2 hover:border-blue-500/60 hover:shadow-blue-500/20"
+                      style={motionStyle}
+                    >
+                      <div className="flex items-center justify-between">
+                        <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 via-blue-400 to-cyan-400 text-xl font-bold text-slate-950">
+                          {stepNumber}
+                        </span>
+                        <span className="text-xs font-semibold uppercase tracking-wide text-cyan-300">
+                          Step {stepNumber} of {totalSteps}
+                        </span>
+                      </div>
+                      <span className="inline-flex items-center gap-3 text-sm font-semibold uppercase tracking-wide text-cyan-300">
+                        <Icon className="h-5 w-5" />
+                        {point.highlight}
+                      </span>
+                      <h3 className="text-2xl font-semibold text-slate-100">
+                        <span className="inline-block bg-gradient-to-r from-blue-500 via-blue-400 to-cyan-400 bg-clip-text font-bold text-transparent">
+                          {point.emphasis}
+                        </span>
+                        <span className="mt-1 block text-lg font-semibold text-slate-300">
+                          {point.title}
+                        </span>
+                      </h3>
+                      <p className="text-base text-slate-300">{point.description}</p>
+                      <motion.ul
+                        layout
+                        variants={staggerContainerVariants}
+                        className="mt-4 space-y-3 text-base text-slate-300"
+                        style={motionStyle}
+                      >
+                        {point.bullets.map((bullet) => (
+                          <motion.li
+                            key={bullet}
+                            layout
+                            variants={staggerItemVariants}
+                            className="flex items-start gap-4"
+                            style={motionStyle}
+                          >
+                            <CheckCircle2 className="mt-1 size-5 flex-shrink-0 text-blue-400" />
+                            <span className="font-medium text-slate-100">{bullet}</span>
+                          </motion.li>
+                        ))}
+                      </motion.ul>
+                    </motion.article>
+                  )
+                })}
+              </motion.div>
+            </div>
+          </motion.section>
+
+          <motion.section
+            id="audiences"
+            layout
+            className="scroll-mt-32 bg-gradient-to-b from-black via-slate-950 to-black py-20"
+            variants={sectionVariants}
+            initial={reduceMotion ? undefined : "hidden"}
+            whileInView={reduceMotion ? undefined : "show"}
+            viewport={DEFAULT_VIEWPORT}
+            transition={{ duration: 0.5, ease: DEFAULT_EASE }}
+            style={motionStyle}
+          >
+            <div className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
+              <motion.div
+                layout
+                variants={staggerContainerVariants}
+                className="mx-auto max-w-3xl text-center"
+                style={motionStyle}
+              >
+                <motion.span
+                  layout
+                  variants={staggerItemVariants}
+                  className="inline-flex items-center gap-2 rounded-full border border-blue-500/40 bg-blue-500/10 px-4 py-1.5 text-sm font-semibold uppercase tracking-wide text-cyan-300"
+                  style={motionStyle}
+                >
+                  <ShoppingCart className="h-4 w-4" />
+                  Two audiences, one delivery partner
+                </motion.span>
+                <motion.h2
+                  layout
+                  variants={staggerItemVariants}
+                  className="mt-4 text-3xl font-semibold sm:text-4xl text-slate-100"
+                  style={motionStyle}
+                >
+                  Built for appliance retailers and everyday buyers
+                </motion.h2>
+                <motion.p
+                  layout
+                  variants={staggerItemVariants}
+                  className="mt-4 text-lg text-slate-300"
+                  style={motionStyle}
+                >
+                  Whether you manage weekly delivery runs or just scored the perfect marketplace deal, EW Transportation keeps every drop-off fast, affordable, and transparent.
+                </motion.p>
+              </motion.div>
+              <motion.div
+                layout
+                variants={staggerContainerVariants}
+                className="mt-14 grid gap-10 md:grid-cols-2"
+                style={motionStyle}
+              >
+                {audienceSegments.map((segment) => (
                   <motion.article
-                    key={point.highlight}
+                    key={segment.title}
                     layout
                     variants={staggerItemVariants}
-                    className="flex h-full flex-col gap-5 rounded-3xl border border-slate-800 bg-slate-900/90 p-8 shadow-lg shadow-blue-500/10 transition-transform duration-300 hover:-translate-y-2 hover:border-blue-500/60 hover:shadow-blue-500/20"
+                    className="flex h-full flex-col gap-6 rounded-3xl border border-slate-800 bg-slate-900/80 p-8 text-left shadow-lg shadow-blue-500/10 transition-transform duration-300 hover:-translate-y-2 hover:border-blue-500/50 hover:shadow-blue-500/20"
                     style={motionStyle}
                   >
                     <div className="flex items-center justify-between">
-                      <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 via-blue-400 to-cyan-400 text-xl font-bold text-slate-950">
-                        {stepNumber}
+                      <span className="inline-flex items-center gap-2 rounded-full bg-blue-500/15 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-cyan-300">
+                        {segment.badge}
                       </span>
-                      <span className="text-xs font-semibold uppercase tracking-wide text-cyan-300">
-                        Step {stepNumber} of {totalSteps}
+                      <span className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                        Focused support
                       </span>
                     </div>
-                    <span className="inline-flex items-center gap-3 text-sm font-semibold uppercase tracking-wide text-cyan-300">
-                      <Icon className="h-5 w-5" />
-                      {point.highlight}
-                    </span>
-                    <h3 className="text-2xl font-semibold text-slate-100">
-                      <span className="inline-block bg-gradient-to-r from-blue-500 via-blue-400 to-cyan-400 bg-clip-text font-bold text-transparent">
-                        {point.emphasis}
-                      </span>
-                      <span className="mt-1 block text-lg font-semibold text-slate-300">
-                        {point.title}
-                      </span>
-                    </h3>
-                    <p className="text-base text-slate-300">{point.description}</p>
+                    <h3 className="text-2xl font-semibold text-slate-100">{segment.title}</h3>
+                    <p className="text-base text-slate-300">{segment.description}</p>
                     <motion.ul
                       layout
                       variants={staggerContainerVariants}
-                      className="mt-4 space-y-3 text-base text-slate-300"
+                      className="space-y-4"
                       style={motionStyle}
                     >
-                      {point.bullets.map((bullet) => (
-                        <motion.li
-                          key={bullet}
-                          layout
-                          variants={staggerItemVariants}
-                          className="flex items-start gap-4"
-                          style={motionStyle}
-                        >
-                          <CheckCircle2 className="mt-1 size-5 flex-shrink-0 text-blue-400" />
-                          <span className="font-medium text-slate-100">{bullet}</span>
-                        </motion.li>
-                      ))}
+                      {segment.highlights.map((item) => {
+                        const HighlightIcon = item.icon
+                        return (
+                          <motion.li
+                            key={item.title}
+                            layout
+                            variants={staggerItemVariants}
+                            className="flex items-start gap-3"
+                            style={motionStyle}
+                          >
+                            <span className="mt-0.5 rounded-xl bg-blue-500/10 p-2 text-cyan-300">
+                              <HighlightIcon className="h-4 w-4" />
+                            </span>
+                            <div className="space-y-1">
+                              <p className="text-sm font-semibold text-slate-100">{item.title}</p>
+                              <p className="text-sm text-slate-300">{item.description}</p>
+                            </div>
+                          </motion.li>
+                        )
+                      })}
                     </motion.ul>
+                    {segment.note ? (
+                      <p className="rounded-2xl border border-blue-500/30 bg-slate-950/80 px-4 py-3 text-sm font-medium text-cyan-200">
+                        {segment.note}
+                      </p>
+                    ) : null}
+                    <div className="mt-auto">
+                      <Link
+                        href={segment.ctaHref}
+                        className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-blue-500 via-blue-400 to-cyan-400 px-5 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-blue-500/20 transition-transform duration-300 hover:-translate-y-1 hover:shadow-blue-400/30 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/30"
+                      >
+                        <Route className="h-4 w-4" />
+                        {segment.ctaLabel}
+                      </Link>
+                    </div>
                   </motion.article>
-                )
-              })}
-            </motion.div>
-          </div>
-        </motion.section>
+                ))}
+              </motion.div>
+              <motion.div
+                layout
+                variants={staggerItemVariants}
+                className="mt-16 flex flex-col items-center gap-4 rounded-3xl border border-blue-500/30 bg-blue-500/10 px-8 py-10 text-center shadow-lg shadow-blue-500/10 sm:flex-row sm:items-center sm:text-left"
+                style={motionStyle}
+              >
+                <div className="flex items-center gap-3">
+                  <Smartphone className="h-10 w-10 text-cyan-300" />
+                  <span className="text-lg font-semibold text-slate-100">Custom SMS tracking software</span>
+                </div>
+                <p className="text-sm text-slate-200 sm:flex-1">
+                  Keeps customers informed every step of the way with automated pickup, en-route, and delivery confirmations.
+                </p>
+              </motion.div>
+            </div>
+          </motion.section>
 
-        <motion.section
-          id="audiences"
-          layout
-          className="scroll-mt-32 bg-gradient-to-b from-black via-slate-950 to-black py-20"
-          variants={sectionVariants}
-          initial={reduceMotion ? undefined : "hidden"}
-          whileInView={reduceMotion ? undefined : "show"}
-          viewport={DEFAULT_VIEWPORT}
-          transition={{ duration: 0.5, ease: DEFAULT_EASE }}
-          style={motionStyle}
-        >
-          <div className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
-            <motion.div
-              layout
-              variants={staggerContainerVariants}
-              className="mx-auto max-w-3xl text-center"
-              style={motionStyle}
-            >
-              <motion.span
-                layout
-                variants={staggerItemVariants}
-                className="inline-flex items-center gap-2 rounded-full border border-blue-500/40 bg-blue-500/10 px-4 py-1.5 text-sm font-semibold uppercase tracking-wide text-cyan-300"
-                style={motionStyle}
-              >
-                <ShoppingCart className="h-4 w-4" />
-                Two audiences, one delivery partner
-              </motion.span>
-              <motion.h2
-                layout
-                variants={staggerItemVariants}
-                className="mt-4 text-3xl font-semibold sm:text-4xl text-slate-100"
-                style={motionStyle}
-              >
-                Built for appliance retailers and everyday buyers
-              </motion.h2>
-              <motion.p
-                layout
-                variants={staggerItemVariants}
-                className="mt-4 text-lg text-slate-300"
-                style={motionStyle}
-              >
-                Whether you manage weekly delivery runs or just scored the perfect marketplace deal, EW Transportation keeps every drop-off fast, affordable, and transparent.
-              </motion.p>
-            </motion.div>
-            <motion.div
-              layout
-              variants={staggerContainerVariants}
-              className="mt-14 grid gap-10 md:grid-cols-2"
-              style={motionStyle}
-            >
-              {audienceSegments.map((segment) => (
-                <motion.article
-                  key={segment.title}
-                  layout
-                  variants={staggerItemVariants}
-                  className="flex h-full flex-col gap-6 rounded-3xl border border-slate-800 bg-slate-900/80 p-8 text-left shadow-lg shadow-blue-500/10 transition-transform duration-300 hover:-translate-y-2 hover:border-blue-500/50 hover:shadow-blue-500/20"
-                  style={motionStyle}
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="inline-flex items-center gap-2 rounded-full bg-blue-500/15 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-cyan-300">
-                      {segment.badge}
-                    </span>
-                    <span className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                      Focused support
-                    </span>
-                  </div>
-                  <h3 className="text-2xl font-semibold text-slate-100">{segment.title}</h3>
-                  <p className="text-base text-slate-300">{segment.description}</p>
-                  <motion.ul
-                    layout
-                    variants={staggerContainerVariants}
-                    className="space-y-4"
-                    style={motionStyle}
-                  >
-                    {segment.highlights.map((item) => {
-                      const HighlightIcon = item.icon
-                      return (
-                        <motion.li
-                          key={item.title}
-                          layout
-                          variants={staggerItemVariants}
-                          className="flex items-start gap-3"
-                          style={motionStyle}
-                        >
-                          <span className="mt-0.5 rounded-xl bg-blue-500/10 p-2 text-cyan-300">
-                            <HighlightIcon className="h-4 w-4" />
-                          </span>
-                          <div className="space-y-1">
-                            <p className="text-sm font-semibold text-slate-100">{item.title}</p>
-                            <p className="text-sm text-slate-300">{item.description}</p>
-                          </div>
-                        </motion.li>
-                      )
-                    })}
-                  </motion.ul>
-                  {segment.note ? (
-                    <p className="rounded-2xl border border-blue-500/30 bg-slate-950/80 px-4 py-3 text-sm font-medium text-cyan-200">
-                      {segment.note}
-                    </p>
-                  ) : null}
-                  <div className="mt-auto">
-                    <Link
-                      href={segment.ctaHref}
-                      className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-blue-500 via-blue-400 to-cyan-400 px-5 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-blue-500/20 transition-transform duration-300 hover:-translate-y-1 hover:shadow-blue-400/30 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/30"
-                    >
-                      <Route className="h-4 w-4" />
-                      {segment.ctaLabel}
-                    </Link>
-                  </div>
-                </motion.article>
-              ))}
-            </motion.div>
-            <motion.div
-              layout
-              variants={staggerItemVariants}
-              className="mt-16 flex flex-col items-center gap-4 rounded-3xl border border-blue-500/30 bg-blue-500/10 px-8 py-10 text-center shadow-lg shadow-blue-500/10 sm:flex-row sm:items-center sm:text-left"
-              style={motionStyle}
-            >
-              <div className="flex items-center gap-3">
-                <Smartphone className="h-10 w-10 text-cyan-300" />
-                <span className="text-lg font-semibold text-slate-100">Custom SMS tracking software</span>
-              </div>
-              <p className="text-sm text-slate-200 sm:flex-1">
-                Keeps customers informed every step of the way with automated pickup, en-route, and delivery confirmations.
-              </p>
-            </motion.div>
-          </div>
-        </motion.section>
-
-        {/**
+          {/**
         <section id="features" className="scroll-mt-32 bg-black py-20">
           <div className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
             <div className="flex flex-col gap-6 text-center">
@@ -1044,596 +1044,606 @@ export default function Home() {
         </section>
         */}
 
-        {/* Process section uses pinned timeline line and staggered cards triggered on view. */}
-        <motion.section
-          id="process"
-          layout
-          className="scroll-mt-32 bg-gradient-to-b from-black via-slate-950 to-black py-20"
-          variants={sectionVariants}
-          initial={reduceMotion ? undefined : "hidden"}
-          whileInView={reduceMotion ? undefined : "show"}
-          viewport={DEFAULT_VIEWPORT}
-          transition={{ duration: 0.5, ease: DEFAULT_EASE }}
-          style={motionStyle}
-        >
-          <div className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
-            <motion.div
-              layout
-              variants={staggerContainerVariants}
-              className="mx-auto max-w-3xl text-center"
-              style={motionStyle}
-            >
-              <motion.span
-                layout
-                variants={staggerItemVariants}
-                className="inline-flex items-center gap-2 rounded-full border border-blue-500/40 bg-blue-500/10 px-4 py-1.5 text-sm font-semibold uppercase tracking-wide text-cyan-300"
-                style={motionStyle}
-              >
-                <ClipboardCheck className="h-4 w-4" />
-                3-step delivery workflow
-              </motion.span>
-              <motion.h2
-                layout
-                variants={staggerItemVariants}
-                className="mt-4 text-3xl font-semibold sm:text-4xl text-slate-100"
-                style={motionStyle}
-              >
-                From request to confirmation without missed beats
-              </motion.h2>
-              <motion.p
-                layout
-                variants={staggerItemVariants}
-                className="mt-3 text-lg text-slate-300"
-                style={motionStyle}
-              >
-                Submit the job, track the route, receive proof—our dispatch keeps the handoffs tight every step of the way.
-              </motion.p>
-            </motion.div>
-            <motion.div
-              layout
-              className="relative mt-16"
-              variants={staggerContainerVariants}
-              style={motionStyle}
-            >
-              <div className="pointer-events-none absolute left-[34px] top-16 h-[calc(100%-48px)] w-px bg-gradient-to-b from-blue-500/30 via-cyan-400/30 to-blue-500/10 md:hidden" />
-              <div className="pointer-events-none absolute top-12 hidden h-px w-full bg-gradient-to-r from-blue-500/30 via-cyan-400/40 to-blue-500/20 md:block" />
+          {/* Process section uses pinned timeline line and staggered cards triggered on view. */}
+          <motion.section
+            id="process"
+            layout
+            className="scroll-mt-32 bg-gradient-to-b from-black via-slate-950 to-black py-20"
+            variants={sectionVariants}
+            initial={reduceMotion ? undefined : "hidden"}
+            whileInView={reduceMotion ? undefined : "show"}
+            viewport={DEFAULT_VIEWPORT}
+            transition={{ duration: 0.5, ease: DEFAULT_EASE }}
+            style={motionStyle}
+          >
+            <div className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
               <motion.div
                 layout
                 variants={staggerContainerVariants}
-                className="grid gap-10 md:grid-cols-3"
+                className="mx-auto max-w-3xl text-center"
                 style={motionStyle}
               >
-                {processSteps.map((step) => {
-                  const Icon = step.icon
-                  const isHighlight = Boolean(step.highlight)
-                  return (
-                    <motion.article
-                      key={step.phase}
-                      layout
-                      variants={staggerItemVariants}
-                      className={`relative flex h-full flex-col gap-5 rounded-3xl border border-slate-800 bg-slate-900 p-8 shadow-lg shadow-blue-500/10 transition-transform duration-300 hover:-translate-y-2 ${isHighlight ? "border-blue-500/60 bg-slate-900/90 shadow-blue-500/20" : ""
-                        }`}
-                      style={motionStyle}
-                    >
-                      <span className="pointer-events-none absolute left-[27px] top-14 h-3 w-3 rounded-full bg-cyan-400 md:hidden" />
-                      <span className="pointer-events-none absolute left-1/2 top-0 hidden h-4 w-4 -translate-x-1/2 rounded-full bg-blue-500 md:block" />
-                      <div className="flex items-start gap-4">
-                        <span
-                          className={`flex h-16 w-16 items-center justify-center rounded-2xl text-3xl font-bold shadow-lg shadow-blue-500/15 ${isHighlight
+                <motion.span
+                  layout
+                  variants={staggerItemVariants}
+                  className="inline-flex items-center gap-2 rounded-full border border-blue-500/40 bg-blue-500/10 px-4 py-1.5 text-sm font-semibold uppercase tracking-wide text-cyan-300"
+                  style={motionStyle}
+                >
+                  <ClipboardCheck className="h-4 w-4" />
+                  3-step delivery workflow
+                </motion.span>
+                <motion.h2
+                  layout
+                  variants={staggerItemVariants}
+                  className="mt-4 text-3xl font-semibold sm:text-4xl text-slate-100"
+                  style={motionStyle}
+                >
+                  From request to confirmation without missed beats
+                </motion.h2>
+                <motion.p
+                  layout
+                  variants={staggerItemVariants}
+                  className="mt-3 text-lg text-slate-300"
+                  style={motionStyle}
+                >
+                  Submit the job, track the route, receive proof—our dispatch keeps the handoffs tight every step of the way.
+                </motion.p>
+              </motion.div>
+              <motion.div
+                layout
+                className="relative mt-16"
+                variants={staggerContainerVariants}
+                style={motionStyle}
+              >
+                <div className="pointer-events-none absolute left-[34px] top-16 h-[calc(100%-48px)] w-px bg-gradient-to-b from-blue-500/30 via-cyan-400/30 to-blue-500/10 md:hidden" />
+                <div className="pointer-events-none absolute top-12 hidden h-px w-full bg-gradient-to-r from-blue-500/30 via-cyan-400/40 to-blue-500/20 md:block" />
+                <motion.div
+                  layout
+                  variants={staggerContainerVariants}
+                  className="grid gap-10 md:grid-cols-3"
+                  style={motionStyle}
+                >
+                  {processSteps.map((step) => {
+                    const Icon = step.icon
+                    const isHighlight = Boolean(step.highlight)
+                    return (
+                      <motion.article
+                        key={step.phase}
+                        layout
+                        variants={staggerItemVariants}
+                        className={`relative flex h-full flex-col gap-5 rounded-3xl border border-slate-800 bg-slate-900 p-8 shadow-lg shadow-blue-500/10 transition-transform duration-300 hover:-translate-y-2 ${isHighlight ? "border-blue-500/60 bg-slate-900/90 shadow-blue-500/20" : ""
+                          }`}
+                        style={motionStyle}
+                      >
+                        <span className="pointer-events-none absolute left-[27px] top-14 h-3 w-3 rounded-full bg-cyan-400 md:hidden" />
+                        <span className="pointer-events-none absolute left-1/2 top-0 hidden h-4 w-4 -translate-x-1/2 rounded-full bg-blue-500 md:block" />
+                        <div className="flex items-start gap-4">
+                          <span
+                            className={`flex h-16 w-16 items-center justify-center rounded-2xl text-3xl font-bold shadow-lg shadow-blue-500/15 ${isHighlight
                               ? "bg-gradient-to-br from-blue-500 via-blue-400 to-cyan-400 text-slate-950"
                               : "bg-slate-800 text-cyan-300"
-                            }`}
-                        >
-                          {step.phase}
-                        </span>
-                        <div className="flex flex-col text-left">
-                          <span className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-cyan-300">
-                            <Icon className="h-5 w-5" />
-                            {step.timeframe}
+                              }`}
+                          >
+                            {step.phase}
                           </span>
-                          <h3 className="mt-2 text-xl font-semibold text-slate-100">{step.title}</h3>
-                          {isHighlight ? (
-                            <span className="mt-1 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-500 via-blue-400 to-cyan-400 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-950">
-                              Priority phase
+                          <div className="flex flex-col text-left">
+                            <span className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-cyan-300">
+                              <Icon className="h-5 w-5" />
+                              {step.timeframe}
                             </span>
-                          ) : null}
+                            <h3 className="mt-2 text-xl font-semibold text-slate-100">{step.title}</h3>
+                            {isHighlight ? (
+                              <span className="mt-1 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-500 via-blue-400 to-cyan-400 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-950">
+                                Priority phase
+                              </span>
+                            ) : null}
+                          </div>
                         </div>
-                      </div>
-                      <p className="text-lg font-semibold text-blue-300">{step.outcome}</p>
-                      <p className="rounded-2xl bg-slate-900/70 px-4 py-3 text-sm font-medium text-slate-300">{step.support}</p>
-                      {isHighlight ? (
-                        <p className="mt-3 rounded-2xl border border-blue-500/40 bg-slate-950 px-4 py-3 text-sm font-semibold text-cyan-300">
-                          Tracking links, dispatch updates, and liftgate handling keep your items secure.
-                        </p>
-                      ) : null}
-                    </motion.article>
-                  )
-                })}
+                        <p className="text-lg font-semibold text-blue-300">{step.outcome}</p>
+                        <p className="rounded-2xl bg-slate-900/70 px-4 py-3 text-sm font-medium text-slate-300">{step.support}</p>
+                        {isHighlight ? (
+                          <p className="mt-3 rounded-2xl border border-blue-500/40 bg-slate-950 px-4 py-3 text-sm font-semibold text-cyan-300">
+                            Tracking links, dispatch updates, and liftgate handling keep your items secure.
+                          </p>
+                        ) : null}
+                      </motion.article>
+                    )
+                  })}
+                </motion.div>
               </motion.div>
-            </motion.div>
-          </div>
-        </motion.section>
+            </div>
+          </motion.section>
 
-        {/* Services gallery cascades cards with whileInView trigger for each row. */}
-        <motion.section
-          id="services"
-          layout
-          className="scroll-mt-32 bg-gradient-to-b from-slate-950 via-black to-slate-950 py-20"
-          variants={sectionVariants}
-          initial={reduceMotion ? undefined : "hidden"}
-          whileInView={reduceMotion ? undefined : "show"}
-          viewport={DEFAULT_VIEWPORT}
-          transition={{ duration: 0.5, ease: DEFAULT_EASE }}
-          style={motionStyle}
-        >
-          <div className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
-            <motion.div
-              layout
-              variants={staggerContainerVariants}
-              className="max-w-3xl"
-              style={motionStyle}
-            >
-              <motion.h2
+          {/* Services gallery cascades cards with whileInView trigger for each row. 
+          <motion.section
+            id="services"
+            layout
+            className="scroll-mt-32 bg-gradient-to-b from-slate-950 via-black to-slate-950 py-20"
+            variants={sectionVariants}
+            initial={reduceMotion ? undefined : "hidden"}
+            whileInView={reduceMotion ? undefined : "show"}
+            viewport={DEFAULT_VIEWPORT}
+            transition={{ duration: 0.5, ease: DEFAULT_EASE }}
+            style={motionStyle}
+          >
+            <div className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
+              <motion.div
                 layout
-                variants={staggerItemVariants}
-                className="text-3xl font-semibold sm:text-4xl text-slate-100"
+                variants={staggerContainerVariants}
+                className="max-w-3xl"
                 style={motionStyle}
               >
-                Moves, deliveries, and relocations we handle every week
-              </motion.h2>
-              <motion.p
+                <motion.h2
+                  layout
+                  variants={staggerItemVariants}
+                  className="text-3xl font-semibold sm:text-4xl text-slate-100"
+                  style={motionStyle}
+                >
+                  Moves, deliveries, and relocations we handle every week
+                </motion.h2>
+                <motion.p
+                  layout
+                  variants={staggerItemVariants}
+                  className="mt-4 text-lg text-slate-300"
+                  style={motionStyle}
+                >
+                  From downtown offices to suburban homes, our Edmonton crews bring liftgates, protection, and on-time arrivals to every job.
+                </motion.p>
+              </motion.div>
+              <motion.div
                 layout
-                variants={staggerItemVariants}
-                className="mt-4 text-lg text-slate-300"
+                variants={staggerContainerVariants}
+                className="mt-14 grid gap-10 lg:grid-cols-3"
                 style={motionStyle}
               >
-                From downtown offices to suburban homes, our Edmonton crews bring liftgates, protection, and on-time arrivals to every job.
-              </motion.p>
-            </motion.div>
-            <motion.div
-              layout
-              variants={staggerContainerVariants}
-              className="mt-14 grid gap-10 lg:grid-cols-3"
-              style={motionStyle}
-            >
-              <AnimatePresence mode="popLayout">
-                {serviceExamples.map((service) => (
-                  <motion.article
-                    key={service.name}
-                    layout
-                    variants={staggerItemVariants}
-                    initial={reduceMotion ? undefined : "hidden"}
-                    animate={reduceMotion ? undefined : "show"}
-                    exit={reduceMotion ? undefined : "exit"}
-                    className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-slate-800 bg-slate-900 shadow-lg shadow-blue-500/10 transition-transform duration-300 hover:-translate-y-2 hover:border-blue-500/50 hover:shadow-blue-500/20 md:cursor-pointer"
-                    style={motionStyle}
-                  >
-                    <div className="relative h-48 w-full overflow-hidden">
-                      <Image
-                        src={service.image}
-                        alt={service.imageAlt}
-                        fill
-                        className="object-cover transition-transform duration-300 group-hover:scale-105"
-                        sizes="(min-width: 1024px) 30vw, (min-width: 768px) 45vw, 90vw"
-                        priority={false}
-                      />
-                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-                    </div>
-                    <div className="flex flex-1 flex-col px-8 pb-8 pt-6">
-                      <div className="text-xs font-semibold uppercase tracking-wide text-cyan-300">
-                        {service.category}
+                <AnimatePresence mode="popLayout">
+                  {serviceExamples.map((service) => (
+                    <motion.article
+                      key={service.name}
+                      layout
+                      variants={staggerItemVariants}
+                      initial={reduceMotion ? undefined : "hidden"}
+                      animate={reduceMotion ? undefined : "show"}
+                      exit={reduceMotion ? undefined : "exit"}
+                      className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-slate-800 bg-slate-900 shadow-lg shadow-blue-500/10 transition-transform duration-300 hover:-translate-y-2 hover:border-blue-500/50 hover:shadow-blue-500/20 md:cursor-pointer"
+                      style={motionStyle}
+                    >
+                      <div className="relative h-48 w-full overflow-hidden">
+                        <Image
+                          src={service.image}
+                          alt={service.imageAlt}
+                          fill
+                          className="object-cover transition-transform duration-300 group-hover:scale-105"
+                          sizes="(min-width: 1024px) 30vw, (min-width: 768px) 45vw, 90vw"
+                          priority={false}
+                        />
+                        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
                       </div>
-                      <h3 className="mt-2 text-xl font-semibold text-slate-100">{service.name}</h3>
-                      <p className="mt-3 flex-1 text-base text-slate-300">{service.description}</p>
-                      <div className="mt-6 flex items-center gap-2 text-sm font-medium text-blue-300">
-                        <service.icon className="h-4 w-4" />
-                        Powered by EW Transportation
+                      <div className="flex flex-1 flex-col px-8 pb-8 pt-6">
+                        <div className="text-xs font-semibold uppercase tracking-wide text-cyan-300">
+                          {service.category}
+                        </div>
+                        <h3 className="mt-2 text-xl font-semibold text-slate-100">{service.name}</h3>
+                        <p className="mt-3 flex-1 text-base text-slate-300">{service.description}</p>
+                        <div className="mt-6 flex items-center gap-2 text-sm font-medium text-blue-300">
+                          <service.icon className="h-4 w-4" />
+                          Powered by EW Transportation
+                        </div>
+                        <Link
+                          href={service.href}
+                          target="_blank"
+                          rel="noreferrer"
+                          prefetch={false}
+                          className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-blue-500 via-blue-400 to-cyan-400 px-4 py-2 text-sm font-semibold text-slate-950 shadow-md shadow-blue-500/20 transition hover:-translate-y-1 hover:shadow-blue-400/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/30 md:hidden"
+                        >
+                          Open preview
+                        </Link>
                       </div>
                       <Link
                         href={service.href}
                         target="_blank"
                         rel="noreferrer"
                         prefetch={false}
-                        className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-blue-500 via-blue-400 to-cyan-400 px-4 py-2 text-sm font-semibold text-slate-950 shadow-md shadow-blue-500/20 transition hover:-translate-y-1 hover:shadow-blue-400/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/30 md:hidden"
-                      >
-                        Open preview
-                      </Link>
-                    </div>
-                    <Link
-                      href={service.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      prefetch={false}
-                      aria-label={`Open ${service.name} preview in a new tab`}
-                      className="absolute inset-0 hidden md:block"
-                    />
-                  </motion.article>
-                ))}
-              </AnimatePresence>
-            </motion.div>
-          </div>
-        </motion.section>
-
-        {/* Trust section layers badges with stagger to emphasize credibility. */}
-        <motion.section
-          id="trust"
-          layout
-          className="scroll-mt-32 bg-gradient-to-b from-black via-slate-950 to-black py-20"
-          variants={sectionVariants}
-          initial={reduceMotion ? undefined : "hidden"}
-          whileInView={reduceMotion ? undefined : "show"}
-          viewport={DEFAULT_VIEWPORT}
-          transition={{ duration: 0.5, ease: DEFAULT_EASE }}
-          style={motionStyle}
-        >
-          <div className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
-            <motion.div
-              layout
-              variants={staggerContainerVariants}
-              className="flex flex-col gap-6 text-center"
-              style={motionStyle}
-            >
-              <motion.span
-                layout
-                variants={staggerItemVariants}
-                className="mx-auto inline-flex items-center gap-2 rounded-full border border-blue-500/40 bg-blue-500/10 px-4 py-1.5 text-sm font-semibold uppercase tracking-wide text-cyan-300"
-                style={motionStyle}
-              >
-                <BadgeCheck className="h-4 w-4" />
-                Trusted Edmonton moving & courier crews
-              </motion.span>
-              <motion.h2
-                layout
-                variants={staggerItemVariants}
-                className="text-3xl font-semibold sm:text-4xl text-slate-100"
-                style={motionStyle}
-              >
-                Why thousands count on EW Transportation every year
-              </motion.h2>
-              <motion.p
-                layout
-                variants={staggerItemVariants}
-                className="mx-auto max-w-3xl text-lg text-slate-300"
-                style={motionStyle}
-              >
-                We invest in insured crews, tailgate trucks, and real-time communication so every move, delivery, and courier job arrives safely and on schedule.
-              </motion.p>
-            </motion.div>
-            <motion.div
-              layout
-              variants={staggerContainerVariants}
-              className="mt-14 grid gap-8 md:grid-cols-2"
-              style={motionStyle}
-            >
-              <AnimatePresence mode="popLayout">
-                {trustSignals.map((signal, index) => {
-                  const Icon = signal.icon
-                  const isHighlight = Boolean(signal.highlight)
-                  const badgeNumber = index + 1
-                  return (
-                    <motion.article
-                      key={signal.title}
-                      layout
-                      variants={staggerItemVariants}
-                      initial={reduceMotion ? undefined : "hidden"}
-                      animate={reduceMotion ? undefined : "show"}
-                      exit={reduceMotion ? undefined : "exit"}
-                      className={`flex h-full flex-col gap-4 rounded-3xl border border-slate-800 bg-slate-900 p-8 text-left shadow-lg shadow-blue-500/10 transition-transform duration-300 hover:-translate-y-2 ${isHighlight ? "border-blue-500/50 bg-slate-900/90 shadow-blue-500/20" : "hover:border-blue-500/30 hover:bg-slate-900/80"
-                        }`}
-                      style={motionStyle}
-                    >
-                      <div className="flex items-center justify-between">
-                        <span
-                          className={`inline-flex h-12 w-12 items-center justify-center rounded-full text-lg font-semibold ${isHighlight
-                              ? "bg-gradient-to-br from-blue-500 via-blue-400 to-cyan-400 text-slate-950"
-                              : "bg-slate-800 text-cyan-300"
-                            }`}
-                        >
-                          {badgeNumber}
-                        </span>
-                        <span className="text-xs font-semibold uppercase tracking-wide text-cyan-300">
-                          Ref #{badgeNumber}
-                        </span>
-                      </div>
-                      <span
-                        className={`inline-flex h-12 w-12 items-center justify-center rounded-2xl ${isHighlight ? "bg-gradient-to-br from-blue-500 via-blue-400 to-cyan-400 text-slate-950" : "bg-slate-800 text-cyan-300"
-                          }`}
-                      >
-                        <Icon className="h-5 w-5" />
-                      </span>
-                      {signal.stat ? (
-                        <span className="inline-flex w-fit items-center gap-1 rounded-full bg-blue-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-cyan-300">
-                          {signal.stat}
-                        </span>
-                      ) : null}
-                      <h3 className="text-lg font-semibold text-slate-100">{signal.title}</h3>
-                      <p className="text-sm text-slate-300">{signal.description}</p>
-                      <div className="mt-3 space-y-2 text-sm">
-                        <div className="flex items-start gap-2 text-slate-400">
-                          <XCircle className="mt-0.5 size-4 flex-shrink-0 text-red-400/80" />
-                          <span>{signal.contrastOther}</span>
-                        </div>
-                        <div className="flex items-start gap-2 font-semibold text-slate-100">
-                          <CheckCircle2 className="mt-0.5 size-4 flex-shrink-0 text-cyan-300" />
-                          <span>{signal.contrastUs}</span>
-                        </div>
-                      </div>
+                        aria-label={`Open ${service.name} preview in a new tab`}
+                        className="absolute inset-0 hidden md:block"
+                      />
                     </motion.article>
-                  )
-                })}
-              </AnimatePresence>
-            </motion.div>
-            <motion.div
-              layout
-              variants={staggerContainerVariants}
-              className="mt-16 flex flex-col items-center gap-4 text-center"
-              style={motionStyle}
-            >
-              <motion.p
-                layout
-                variants={staggerItemVariants}
-                className="text-sm font-medium uppercase tracking-wide text-cyan-300"
-                style={motionStyle}
-              >
-                Ready when you are: book a move, schedule a courier, or plan your next relocation
-              </motion.p>
+                  ))}
+                </AnimatePresence>
+              </motion.div>
+            </div>
+          </motion.section>*/}
+
+          {/* Trust section layers badges with stagger to emphasize credibility. */}
+          {/* Trust section layers badges with stagger to emphasize credibility. */}
+
+          <motion.section
+            id="trust"
+            layout
+            className="scroll-mt-32 bg-gradient-to-b from-black via-slate-950 to-black py-20"
+            variants={sectionVariants}
+            initial={reduceMotion ? undefined : "hidden"}
+            whileInView={reduceMotion ? undefined : "show"}
+            viewport={DEFAULT_VIEWPORT}
+            transition={{ duration: 0.5, ease: DEFAULT_EASE }}
+            style={motionStyle}
+          >
+            <div className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
               <motion.div
                 layout
-                variants={staggerItemVariants}
+                variants={staggerContainerVariants}
+                className="mx-auto max-w-3xl text-center mb-14"
                 style={motionStyle}
               >
-                <Link
-                  href="#pricing"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-blue-500 via-blue-400 to-cyan-400 px-6 py-3 text-base font-semibold text-slate-950 shadow-xl shadow-blue-500/20 transition-transform duration-300 hover:-translate-y-1 hover:shadow-blue-400/30 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/30"
+                <motion.span
+                  layout
+                  variants={staggerItemVariants}
+                  className="inline-flex items-center gap-2 rounded-full border border-blue-500/40 bg-blue-500/10 px-4 py-1.5 text-sm font-semibold uppercase tracking-wide text-cyan-300"
+                  style={motionStyle}
                 >
-                  <Truck className="h-4 w-4" />
-                  Get a custom quote
-                </Link>
+                  <BadgeCheck className="h-4 w-4" />
+                  EW vs. the rest
+                </motion.span>
+                <motion.h2
+                  layout
+                  variants={staggerItemVariants}
+                  className="mt-4 text-3xl font-semibold sm:text-4xl text-slate-100"
+                  style={motionStyle}
+                >
+                  Why generic couriers fall short — and we don't
+                </motion.h2>
+                <motion.p
+                  layout
+                  variants={staggerItemVariants}
+                  className="mt-3 text-lg text-slate-300"
+                  style={motionStyle}
+                >
+                  Most delivery options leave you guessing — unvetted drivers, surprise
+                  fees, and zero communication. See exactly how EW Transportation
+                  compares across the things that actually matter.
+                </motion.p>
               </motion.div>
-            </motion.div>
-          </div>
-        </motion.section>
 
-        {/* Pricing section staggers cards and respects plan theme styling. */}
-        <motion.section
-          id="pricing"
-          layout
-          className="scroll-mt-32 bg-gradient-to-b from-slate-950 via-black to-slate-950 py-20"
-          variants={sectionVariants}
-          initial={reduceMotion ? undefined : "hidden"}
-          whileInView={reduceMotion ? undefined : "show"}
-          viewport={DEFAULT_VIEWPORT}
-          transition={{ duration: 0.55, ease: DEFAULT_EASE }}
-          style={motionStyle}
-        >
-          <div className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
-            <motion.div
-              layout
-              variants={staggerContainerVariants}
-              className="flex flex-col gap-6 text-center"
-              style={motionStyle}
-            >
-              <motion.span
+              <motion.div
                 layout
-                variants={staggerItemVariants}
-                className="mx-auto inline-flex items-center gap-2 rounded-full border border-blue-500/40 bg-blue-500/10 px-4 py-1.5 text-sm font-semibold uppercase tracking-wide text-cyan-300"
+                variants={staggerContainerVariants}
+                className="mt-4 grid gap-8 md:grid-cols-2"
                 style={motionStyle}
               >
-                <CalendarDays className="h-4 w-4" />
-                Services & Pricing
-              </motion.span>
-              <motion.h2
-                layout
-                variants={staggerItemVariants}
-                className="text-3xl font-semibold sm:text-4xl text-slate-100"
-                style={motionStyle}
-              >
-                Choose the coverage that fits your move or delivery
-              </motion.h2>
-              <motion.p
-                layout
-                variants={staggerItemVariants}
-                className="mx-auto max-w-2xl text-lg text-slate-300"
-                style={motionStyle}
-              >
-                Transparent rates, tailgate service, and insured crews ready for residential, commercial, and courier jobs across Edmonton.
-              </motion.p>
-              <motion.p
-                layout
-                variants={staggerItemVariants}
-                className="mx-auto max-w-2xl text-base text-slate-400"
-                style={motionStyle}
-              >
-                Need something unique? Call dispatch for a custom route or multi-day project.
-              </motion.p>
-            </motion.div>
-            <motion.div
-              layout
-              variants={staggerContainerVariants}
-              className="mt-14 grid gap-10 lg:grid-cols-3"
-              style={motionStyle}
-            >
-              <AnimatePresence mode="popLayout">
-                {pricingTiers.map((tier) => {
-                  const theme = tier.theme ?? "light"
-                  const isDark = theme === "dark"
-                  const isPremium = theme === "premium"
-                  const daysRemaining = tier.countdownTarget
-                    ? Math.max(
-                      0,
-                      Math.ceil(
-                        (new Date(tier.countdownTarget).getTime() - Date.now()) /
-                        (1000 * 60 * 60 * 24)
-                      )
-                    )
-                    : null
-                  return (
-                    <motion.article
-                      key={tier.name}
-                      layout
-                      variants={staggerItemVariants}
-                      initial={reduceMotion ? undefined : "hidden"}
-                      animate={reduceMotion ? undefined : "show"}
-                      exit={reduceMotion ? undefined : "exit"}
-                      className={`relative flex h-full flex-col rounded-3xl border border-slate-800 p-8 shadow-lg transition-transform duration-300 hover:-translate-y-2 ${tier.highlighted ? "scale-[1.02]" : ""
-                        } ${isPremium
-                          ? "bg-gradient-to-br from-blue-950 via-black to-blue-900 text-slate-100"
-                          : isDark
-                            ? "bg-slate-900 text-slate-100"
-                            : "bg-slate-900/60 text-slate-100"
-                        } ${tier.highlighted && theme === "light" ? "border-blue-500/60 bg-slate-900/80" : ""
-                        }`}
-                      style={motionStyle}
-                    >
-                      {tier.ribbon ? (
+                <AnimatePresence mode="popLayout">
+                  {trustSignals.map((signal, index) => {
+                    const Icon = signal.icon
+                    const isHighlight = Boolean(signal.highlight)
+                    const badgeNumber = index + 1
+                    return (
+                      <motion.article
+                        key={signal.title}
+                        layout
+                        variants={staggerItemVariants}
+                        initial={reduceMotion ? undefined : "hidden"}
+                        animate={reduceMotion ? undefined : "show"}
+                        exit={reduceMotion ? undefined : "exit"}
+                        className={`flex h-full flex-col gap-4 rounded-3xl border border-slate-800 bg-slate-900 p-8 text-left shadow-lg shadow-blue-500/10 transition-transform duration-300 hover:-translate-y-2 ${isHighlight
+                          ? "border-blue-500/50 bg-slate-900/90 shadow-blue-500/20"
+                          : "hover:border-blue-500/30 hover:bg-slate-900/80"
+                          }`}
+                        style={motionStyle}
+                      >
+                        <div className="flex items-center justify-between">
+                          <span
+                            className={`inline-flex h-12 w-12 items-center justify-center rounded-full text-lg font-semibold ${isHighlight
+                              ? "bg-gradient-to-br from-blue-500 via-blue-400 to-cyan-400 text-slate-950"
+                              : "bg-slate-800 text-cyan-300"
+                              }`}
+                          >
+                            {badgeNumber}
+                          </span>
+                          <span className="text-xs font-semibold uppercase tracking-wide text-cyan-300">
+                            Ref #{badgeNumber}
+                          </span>
+                        </div>
                         <span
-                          className={`absolute -right-4 -top-4 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide shadow-md ${isPremium
+                          className={`inline-flex h-12 w-12 items-center justify-center rounded-2xl ${isHighlight
+                            ? "bg-gradient-to-br from-blue-500 via-blue-400 to-cyan-400 text-slate-950"
+                            : "bg-slate-800 text-cyan-300"
+                            }`}
+                        >
+                          <Icon className="h-5 w-5" />
+                        </span>
+                        {signal.stat ? (
+                          <span className="inline-flex w-fit items-center gap-1 rounded-full bg-blue-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-cyan-300">
+                            {signal.stat}
+                          </span>
+                        ) : null}
+                        <h3 className="text-lg font-semibold text-slate-100">{signal.title}</h3>
+                        <p className="text-sm text-slate-300">{signal.description}</p>
+                        <div className="mt-3 space-y-2 text-sm">
+                          <div className="flex items-start gap-2 text-slate-400">
+                            <XCircle className="mt-0.5 size-4 flex-shrink-0 text-red-400/80" />
+                            <span>{signal.contrastOther}</span>
+                          </div>
+                          <div className="flex items-start gap-2 font-semibold text-slate-100">
+                            <CheckCircle2 className="mt-0.5 size-4 flex-shrink-0 text-cyan-300" />
+                            <span>{signal.contrastUs}</span>
+                          </div>
+                        </div>
+                      </motion.article>
+                    )
+                  })}
+                </AnimatePresence>
+              </motion.div>
+              <motion.div
+                layout
+                variants={staggerContainerVariants}
+                className="mt-16 flex flex-col items-center gap-4 text-center"
+                style={motionStyle}
+              >
+                <motion.p
+                  layout
+                  variants={staggerItemVariants}
+                  className="text-sm font-medium uppercase tracking-wide text-cyan-300"
+                  style={motionStyle}
+                >
+                  Ready when you are: book a move, schedule a courier, or plan your next relocation
+                </motion.p>
+                <motion.div
+                  layout
+                  variants={staggerItemVariants}
+                  style={motionStyle}
+                >
+                  <Link
+                    href="#pricing"
+                    className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-blue-500 via-blue-400 to-cyan-400 px-6 py-3 text-base font-semibold text-slate-950 shadow-xl shadow-blue-500/20 transition-transform duration-300 hover:-translate-y-1 hover:shadow-blue-400/30 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/30"
+                  >
+                    <Truck className="h-4 w-4" />
+                    Get a custom quote
+                  </Link>
+                </motion.div>
+              </motion.div>
+            </div>
+          </motion.section>
+
+          {/* Pricing section staggers cards and respects plan theme styling. */}
+          <motion.section
+            id="pricing"
+            layout
+            className="scroll-mt-32 bg-gradient-to-b from-slate-950 via-black to-slate-950 py-20"
+            variants={sectionVariants}
+            initial={reduceMotion ? undefined : "hidden"}
+            whileInView={reduceMotion ? undefined : "show"}
+            viewport={DEFAULT_VIEWPORT}
+            transition={{ duration: 0.55, ease: DEFAULT_EASE }
+            }
+            style={motionStyle}
+          >
+            <div className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
+              <motion.div
+                layout
+                variants={staggerContainerVariants}
+                className="flex flex-col gap-6 text-center"
+                style={motionStyle}
+              >
+                <motion.span
+                  layout
+                  variants={staggerItemVariants}
+                  className="mx-auto inline-flex items-center gap-2 rounded-full border border-blue-500/40 bg-blue-500/10 px-4 py-1.5 text-sm font-semibold uppercase tracking-wide text-cyan-300"
+                  style={motionStyle}
+                >
+                  <CalendarDays className="h-4 w-4" />
+                  Services & Pricing
+                </motion.span>
+                <motion.h2
+                  layout
+                  variants={staggerItemVariants}
+                  className="text-3xl font-semibold sm:text-4xl text-slate-100"
+                  style={motionStyle}
+                >
+                  Choose the coverage that fits your move or delivery
+                </motion.h2>
+                <motion.p
+                  layout
+                  variants={staggerItemVariants}
+                  className="mx-auto max-w-2xl text-lg text-slate-300"
+                  style={motionStyle}
+                >
+                  Transparent rates, tailgate service, and insured crews ready for residential, commercial, and courier jobs across Edmonton.
+                </motion.p>
+                <motion.p
+                  layout
+                  variants={staggerItemVariants}
+                  className="mx-auto max-w-2xl text-base text-slate-400"
+                  style={motionStyle}
+                >
+                  Need something unique? Call dispatch for a custom route or multi-day project.
+                </motion.p>
+              </motion.div>
+              <motion.div
+                layout
+                variants={staggerContainerVariants}
+                className="mt-14 grid gap-10 lg:grid-cols-3"
+                style={motionStyle}
+              >
+                <AnimatePresence mode="popLayout">
+                  {pricingTiers.map((tier) => {
+                    const theme = tier.theme ?? "light"
+                    const isDark = theme === "dark"
+                    const isPremium = theme === "premium"
+                    const daysRemaining = tier.countdownTarget
+                      ? Math.max(
+                        0,
+                        Math.ceil(
+                          (new Date(tier.countdownTarget).getTime() - Date.now()) /
+                          (1000 * 60 * 60 * 24)
+                        )
+                      )
+                      : null
+                    return (
+                      <motion.article
+                        key={tier.name}
+                        layout
+                        variants={staggerItemVariants}
+                        initial={reduceMotion ? undefined : "hidden"}
+                        animate={reduceMotion ? undefined : "show"}
+                        exit={reduceMotion ? undefined : "exit"}
+                        className={`relative flex h-full flex-col rounded-3xl border border-slate-800 p-8 shadow-lg transition-transform duration-300 hover:-translate-y-2 ${tier.highlighted ? "scale-[1.02]" : ""
+                          } ${isPremium
+                            ? "bg-gradient-to-br from-blue-950 via-black to-blue-900 text-slate-100"
+                            : isDark
+                              ? "bg-slate-900 text-slate-100"
+                              : "bg-slate-900/60 text-slate-100"
+                          } ${tier.highlighted && theme === "light" ? "border-blue-500/60 bg-slate-900/80" : ""
+                          }`}
+                        style={motionStyle}
+                      >
+                        {tier.ribbon ? (
+                          <span
+                            className={`absolute -right-4 -top-4 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide shadow-md ${isPremium
                               ? "bg-blue-500 text-white shadow-blue-300"
                               : isDark
                                 ? "bg-cyan-300 text-slate-950 shadow-cyan-200"
                                 : "bg-blue-500 text-white shadow-blue-300"
-                            }`}
-                        >
-                          {tier.ribbon}
-                        </span>
-                      ) : null}
-                      {tier.badge ? (
-                        <span
-                          className={`inline-flex w-fit items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide ${isPremium
+                              }`}
+                          >
+                            {tier.ribbon}
+                          </span>
+                        ) : null}
+                        {tier.badge ? (
+                          <span
+                            className={`inline-flex w-fit items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide ${isPremium
                               ? "bg-blue-900/70 text-sky-200"
                               : isDark
                                 ? "bg-slate-800 text-cyan-200"
                                 : "bg-blue-500/10 text-cyan-300"
-                            }`}
-                        >
-                          {tier.badge}
-                        </span>
-                      ) : null}
-                      {tier.extra_badge ? (
-                        <span
-                          className={`mt-2 inline-flex w-fit items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide ${isPremium
+                              }`}
+                          >
+                            {tier.badge}
+                          </span>
+                        ) : null}
+                        {tier.extra_badge ? (
+                          <span
+                            className={`mt-2 inline-flex w-fit items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide ${isPremium
                               ? "bg-blue-900/70 text-sky-200"
                               : isDark
                                 ? "bg-slate-800 text-cyan-200"
                                 : "bg-blue-500/20 text-cyan-200"
-                            }`}
-                        >
-                          <>
-                            {tier.extra_badge === "(5 Spots Available)" && (
-                              <Zap className="size-4 text-cyan-200" />
-                            )}
-                          </>
-                          {tier.extra_badge}
-                        </span>
-                      ) : null}
-                      <div
+                              }`}
+                          >
+                            <>
+                              {tier.extra_badge === "(5 Spots Available)" && (
+                                <Zap className="size-4 text-cyan-200" />
+                              )}
+                            </>
+                            {tier.extra_badge}
+                          </span>
+                        ) : null}
+                        <div
                           className={`mt-4 text-sm font-semibold uppercase tracking-wide ${isPremium ? "text-sky-200" : isDark ? "text-cyan-200" : "text-cyan-300"
-                          }`}
-                      >
-                        {tier.name}
-                      </div>
-                      <div className="mt-4 flex items-baseline gap-2">
-                        <span
-                          className={`text-4xl font-semibold ${isPremium || isDark ? "text-white" : "text-white"
-                          }`}
-                        >
-                          {tier.price}
-                        </span>
-                        <span
-                          className={`text-sm ${isPremium || isDark ? "text-slate-300" : "text-slate-400"
-                          }`}
-                        >
-                          {tier.period}
-                        </span>
-                      </div>
-                      <p
-                        className={`mt-4 text-sm font-medium ${isDark || isPremium ? "text-slate-200" : "text-slate-300"
-                          }`}
-                      >
-                        {tier.description}
-                      </p>
-                      {daysRemaining !== null ? (
-                        <p
-                          className={`mt-2 text-xs font-semibold uppercase tracking-wide ${isPremium ? "text-sky-200" : isDark ? "text-cyan-200" : "text-cyan-400"
-                          }`}
-                        >
-                          {daysRemaining > 0 ? `${daysRemaining} days left · Ends Jan 1, 2026` : "Offer ends Jan 1, 2026"}
-                        </p>
-                      ) : null}
-                      <motion.ul
-                        layout
-                        variants={staggerContainerVariants}
-                        className={`mt-6 space-y-3 text-sm ${isPremium || isDark ? "text-slate-200" : "text-slate-300"
-                          }`}
-                        style={motionStyle}
-                      >
-                        {tier.features.map(({ text, isNegative }, index) => {
-                          const IconComponent = isNegative ? XCircle : CheckCircle2
-                          const positiveColor = isPremium
-                            ? "text-sky-300"
-                            : isDark
-                              ? "text-cyan-300"
-                              : "text-cyan-300"
-                          const iconClassName = isNegative
-                            ? "mt-0 h-5 w-5 flex-shrink-0 text-red-400"
-                            : `mt-0 h-5 w-5 flex-shrink-0 ${positiveColor}`
-                          const textClassName = isNegative ? "text-red-400" : ""
-
-                          return (
-                            <motion.li
-                              key={`${tier.name}-feature-${index}`}
-                              layout
-                              variants={staggerItemVariants}
-                              className="flex items-start gap-2"
-                              style={motionStyle}
-                            >
-                              <IconComponent className={iconClassName} />
-                              <span className={textClassName}>{text}</span>
-                            </motion.li>
-                          )
-                        })}
-                      </motion.ul>
-
-                      <div className="bg-blue-500/20 w-full h-0.5 my-3 mt-10"></div>
-
-                      <div
-                        className={`mt-6 flex items-center gap-2 text-xs font-medium ${isPremium ? "text-sky-200" : isDark ? "text-cyan-200" : "text-cyan-300"
-                          }`}
-                      >
-                        <ShieldCheck
-                          className={`size-6 flex-shrink-0 ${isPremium ? "text-sky-300" : isDark ? "text-cyan-300" : "text-cyan-300"
                             }`}
-                        />
-                        <span>{tier.privacyNote}</span>
-                      </div>
-                      <div className="mt-8">
-                        <Link
-                          href={tier.ctaHref}
-                          className={`inline-flex w-full items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-all duration-300 focus-visible:outline-none focus-visible:ring-4 ${isPremium
+                        >
+                          {tier.name}
+                        </div>
+                        <div className="mt-4 flex items-baseline gap-2">
+                          <span
+                            className={`text-4xl font-semibold ${isPremium || isDark ? "text-white" : "text-white"
+                              }`}
+                          >
+                            {tier.price}
+                          </span>
+                          <span
+                            className={`text-sm ${isPremium || isDark ? "text-slate-300" : "text-slate-400"
+                              }`}
+                          >
+                            {tier.period}
+                          </span>
+                        </div>
+                        <p
+                          className={`mt-4 text-sm font-medium ${isDark || isPremium ? "text-slate-200" : "text-slate-300"
+                            }`}
+                        >
+                          {tier.description}
+                        </p>
+                        {daysRemaining !== null ? (
+                          <p
+                            className={`mt-2 text-xs font-semibold uppercase tracking-wide ${isPremium ? "text-sky-200" : isDark ? "text-cyan-200" : "text-cyan-400"
+                              }`}
+                          >
+                            {daysRemaining > 0 ? `${daysRemaining} days left · Ends Jan 1, 2026` : "Offer ends Jan 1, 2026"}
+                          </p>
+                        ) : null}
+                        <motion.ul
+                          layout
+                          variants={staggerContainerVariants}
+                          className={`mt-6 space-y-3 text-sm ${isPremium || isDark ? "text-slate-200" : "text-slate-300"
+                            }`}
+                          style={motionStyle}
+                        >
+                          {tier.features.map(({ text, isNegative }, index) => {
+                            const IconComponent = isNegative ? XCircle : CheckCircle2
+                            const positiveColor = isPremium
+                              ? "text-sky-300"
+                              : isDark
+                                ? "text-cyan-300"
+                                : "text-cyan-300"
+                            const iconClassName = isNegative
+                              ? "mt-0 h-5 w-5 flex-shrink-0 text-red-400"
+                              : `mt-0 h-5 w-5 flex-shrink-0 ${positiveColor}`
+                            const textClassName = isNegative ? "text-red-400" : ""
+
+                            return (
+                              <motion.li
+                                key={`${tier.name}-feature-${index}`}
+                                layout
+                                variants={staggerItemVariants}
+                                className="flex items-start gap-2"
+                                style={motionStyle}
+                              >
+                                <IconComponent className={iconClassName} />
+                                <span className={textClassName}>{text}</span>
+                              </motion.li>
+                            )
+                          })}
+                        </motion.ul>
+
+                        <div className="bg-blue-500/20 w-full h-0.5 my-3 mt-10"></div>
+
+                        <div
+                          className={`mt-6 flex items-center gap-2 text-xs font-medium ${isPremium ? "text-sky-200" : isDark ? "text-cyan-200" : "text-cyan-300"
+                            }`}
+                        >
+                          <ShieldCheck
+                            className={`size-6 flex-shrink-0 ${isPremium ? "text-sky-300" : isDark ? "text-cyan-300" : "text-cyan-300"
+                              }`}
+                          />
+                          <span>{tier.privacyNote}</span>
+                        </div>
+                        <div className="mt-8">
+                          <Link
+                            href={tier.ctaHref}
+                            className={`inline-flex w-full items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-all duration-300 focus-visible:outline-none focus-visible:ring-4 ${isPremium
                               ? "bg-gradient-to-r from-blue-900 via-indigo-900 to-blue-800 text-slate-100 hover:-translate-y-1 hover:from-sky-500 hover:via-indigo-500 hover:to-sky-500 hover:text-white focus-visible:ring-blue-400/40"
                               : isDark
                                 ? "bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800 text-slate-100 hover:-translate-y-1 hover:from-blue-500 hover:via-blue-400 hover:to-cyan-400 hover:text-slate-950 focus-visible:ring-blue-500/30"
                                 : tier.highlighted
                                   ? "bg-gradient-to-r from-blue-500 via-blue-400 to-cyan-400 text-slate-950 shadow-xl shadow-blue-500/20 hover:-translate-y-1 hover:shadow-blue-400/30 focus-visible:ring-blue-500/30"
                                   : "border border-slate-700 text-slate-100 hover:-translate-y-1 hover:border-blue-500 hover:bg-slate-900 focus-visible:ring-blue-500/20"
-                            }`}
-                        >
-                          <Truck className="h-4 w-4" />
-                          {tier.ctaLabel}
-                        </Link>
-                      </div>
-                    </motion.article>
-                  )
-                })}
-              </AnimatePresence>
-            </motion.div>
-          </div>
-        </motion.section>
+                              }`}
+                          >
+                            <Truck className="h-4 w-4" />
+                            {tier.ctaLabel}
+                          </Link>
+                        </div>
+                      </motion.article>
+                    )
+                  })}
+                </AnimatePresence>
+              </motion.div>
+            </div>
+          </motion.section >
 
-      </motion.main>
-      </AnimatePresence>
+        </motion.main >
+      </AnimatePresence >
 
       <CommonFooter />
-    </div>
+    </div >
   )
 }
