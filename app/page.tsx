@@ -416,7 +416,7 @@ const pricingTiers: PricingTier[] = [
     highlighted: false, // Set to false if you want the middle one to stand out more
     badge: "$150 flat rate",
     ctaLabel: "Book on Kijiji",
-    ctaHref: "https://www.kijiji.ca/your-ad-link", // Updated
+    ctaHref: "https://www.kijiji.ca/v-moving-storage/edmonton/affordable-courier-&-moving-services-same-day-delivery/1734637614", // Updated
     privacyNote: "No hidden fees. Flat rate. SMS tracking included.",
   },
   {
@@ -454,7 +454,7 @@ const pricingTiers: PricingTier[] = [
     ],
     badge: "Rush option",
     ctaLabel: "View Kijiji Listing",
-    ctaHref: "https://www.kijiji.ca/your-ad-link", // Updated
+    ctaHref: "https://www.kijiji.ca/v-moving-storage/edmonton/affordable-courier-&-moving-services-same-day-delivery/1734637614", // Updated
     theme: "premium",
     privacyNote: "Flat rush fee with bonded drivers and SMS tracking every step.",
   },
