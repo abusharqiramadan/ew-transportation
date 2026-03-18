@@ -1,59 +1,52 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import type { Metadata } from "next"
+import { Inter } from "next/font/google"
+import "./globals.css"
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const inter = Inter({ subsets: ["latin"], display: "swap" })
 
 export const metadata: Metadata = {
-  title: "Muslim Web",
+  title: "EW Transportation | Edmonton moving & courier services",
+  description:
+    "EW Transportation provides reliable, affordable moving and courier services across Edmonton with tailgate trucks, insured crews, and real-time tracking.",
   icons: {
-    icon: "/favicon.ico", // Path to your ICO file in the public folder
+    icon: "/favicon.ico",
+    apple: "/favicon.ico",
   },
-  description: "A program to help Muslim educators build a professional online presence.",
   openGraph: {
-    title: "Muslim Web",
-    description: "A program to help Muslim educators build a professional online presence.",
-    //url: "https://yourwebsite.com",
-    siteName: "Muslim Web",
+    title: "EW Transportation | Edmonton moving & courier services",
+    description:
+      "Tailgate-equipped moving and courier crews delivering homes, offices, and specialty items safely across Edmonton.",
+    url: "https://ew-transportation.ca",
+    siteName: "EW Transportation",
+    locale: "en_CA",
+    type: "website",
     images: [
       {
-        url: "/website-banner.png", // Path to your banner image in public folder
+        url: "https://ew-transportation.ca/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Muslim Web Website Banner",
+        alt: "EW Transportation - Tailgate-equipped moving and courier service",
       },
     ],
-    locale: "en_US",
-    type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Muslim Web",
-    description: "A program to help Muslim educators build a professional online presence.",
-    images: ["/website-banner.png"],
+    title: "EW Transportation | Edmonton moving & courier services",
+    description:
+      "Edmonton's reliable movers and couriers with tailgate trucks, insured crews, and 24/7 dispatch support.",
+    creator: "@ewtransport",
+    images: ["https://ew-transportation.ca/og-image.png"],
   },
-};
+}
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+    <html lang="en" className="scroll-smooth bg-black">
+      <body className={`${inter.className} min-h-screen bg-gradient-to-b from-black via-slate-950 to-black text-slate-100 antialiased`}>{children}</body>
     </html>
-  );
+  )
 }
